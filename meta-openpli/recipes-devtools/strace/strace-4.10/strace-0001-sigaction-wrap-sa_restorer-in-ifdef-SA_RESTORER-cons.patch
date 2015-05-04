@@ -36,19 +36,19 @@ diff --git a/signal.c b/signal.c
 index 74e0fd9..5855d13 100644
 --- a/signal.c
 +++ b/signal.c
-@@ -559,8 +559,10 @@ struct old_sigaction {
+@@ -559,8 +559,10 @@
  	void (*__sa_handler)(int);
  	unsigned long sa_mask;
  	unsigned long sa_flags;
--	void (*sa_restorer)(void);
- #endif /* !MIPS */
++#endif /* !MIPS */
 +#ifdef SA_RESTORER
-+	void (*sa_restorer)(void);
+ 	void (*sa_restorer)(void);
+-#endif /* !MIPS */
 +#endif
  };
  
  struct old_sigaction32 {
-@@ -568,7 +570,9 @@ struct old_sigaction32 {
+@@ -568,7 +570,9 @@
  	uint32_t __sa_handler;
  	uint32_t sa_mask;
  	uint32_t sa_flags;
@@ -58,7 +58,7 @@ index 74e0fd9..5855d13 100644
  };
  
  static void
-@@ -594,7 +598,9 @@ decode_old_sigaction(struct tcb *tcp, long addr)
+@@ -594,7 +598,9 @@
  			memset(&sa, 0, sizeof(sa));
  			sa.__sa_handler = (void*)(uintptr_t)sa32.__sa_handler;
  			sa.sa_flags = sa32.sa_flags;
@@ -68,21 +68,21 @@ index 74e0fd9..5855d13 100644
  			sa.sa_mask = sa32.sa_mask;
  		}
  	} else
-@@ -1138,10 +1144,10 @@ struct new_sigaction
+@@ -1138,10 +1144,10 @@
  #else
  	void (*__sa_handler)(int);
  	unsigned long sa_flags;
 -# if !defined(ALPHA) && !defined(HPPA) && !defined(IA64)
--	void (*sa_restorer)(void);
--# endif /* !ALPHA && !HPPA && !IA64 */
- #endif /* !MIPS */
++#endif /* !MIPS */
 +#ifdef SA_RESTORER
-+	void (*sa_restorer)(void);
+ 	void (*sa_restorer)(void);
+-# endif /* !ALPHA && !HPPA && !IA64 */
+-#endif /* !MIPS */
 +#endif
  	/* Kernel treats sa_mask as an array of longs. */
  	unsigned long sa_mask[NSIG / sizeof(long) ? NSIG / sizeof(long) : 1];
  };
-@@ -1150,7 +1156,9 @@ struct new_sigaction32
+@@ -1150,7 +1156,9 @@
  {
  	uint32_t __sa_handler;
  	uint32_t sa_flags;
@@ -92,7 +92,7 @@ index 74e0fd9..5855d13 100644
  	uint32_t sa_mask[2 * (NSIG / sizeof(long) ? NSIG / sizeof(long) : 1)];
  };
  
-@@ -1176,7 +1184,9 @@ decode_new_sigaction(struct tcb *tcp, long addr)
+@@ -1176,7 +1184,9 @@
  			memset(&sa, 0, sizeof(sa));
  			sa.__sa_handler = (void*)(unsigned long)sa32.__sa_handler;
  			sa.sa_flags     = sa32.sa_flags;
@@ -102,6 +102,4 @@ index 74e0fd9..5855d13 100644
  			/* Kernel treats sa_mask as an array of longs.
  			 * For 32-bit process, "long" is uint32_t, thus, for example,
  			 * 32th bit in sa_mask will end up as bit 0 in sa_mask[1].
--- 
-1.7.1
-
+-1.7.1
