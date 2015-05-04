@@ -80,7 +80,7 @@ init: $(BBLAYERS) $(CONFFILES)
 
 image: init
 	@echo 'Building image for $(MACHINE)'
-	@. $(TOPDIR)/env.source && cd $(TOPDIR) && bitbake openpli-enigma2-image && bitbake openpli-enigma2-feed
+	@. $(TOPDIR)/env.source && cd $(TOPDIR) && bitbake openpli-enigma2-image
 
 update:
 	@echo 'Updating Git repositories...'
