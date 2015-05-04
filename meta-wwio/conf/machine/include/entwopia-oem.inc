@@ -66,7 +66,7 @@ IMAGE_CMD_ubi_append = " \
     rm -Rf ${IMAGEDIR}; \
     "
 
-MACHINE_FEATURES += "3dtv alsa kernelwifi externalwifi wlan hdmicec switchoff bootsplash omb"
+MACHINE_FEATURES += "3dtv alsa kernelwifi externalwifi wlan hdmicec switchoff bootsplash omb skins1080"
 GST_VERSION += "1.0"
 
 BOOTLOGO_FILENAME = "splash.bin"
