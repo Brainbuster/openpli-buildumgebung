@@ -4,7 +4,6 @@ inherit image
 
 IMAGE_INSTALL = " \
 	${ROOTFS_PKGMANAGE} \
-        enigma2-3rdparty-plugins \
 	3rd-party-feed-configs \
 	avahi-daemon \
 	cifs \
