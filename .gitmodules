@@ -1,8 +1,8 @@
 [submodule "meta-openembedded"]
-	url = git://github.com/schleichdi2/openpli-buildumgebung/meta-openembedded
+	url = git://github.com/Brainbuster/openpli-buildumgebung/meta-openembedded
 [submodule "meta-openpli/recipes-openpli/e2openplugins"]
-	url = git://github.com/schleichdi2/openpli-buildumgebung/meta-openpli/recipes-openpli/e2openplugins
+	url = git://github.com/Brainbuster/openpli-buildumgebung/meta-openpli/recipes-openpli/e2openplugins
 [submodule "openembedded-core"]
-	url = git://github.com/schleichdi2/openpli-buildumgebung/openembedded-core
+	url = git://github.com/Brainbuster/openpli-buildumgebung/openembedded-core
 [submodule "bitbake"]
-	url = git://github.com/schleichdi2/openpli-buildumgebung/bitbake
+	url = git://github.com/Brainbuster/openpli-buildumgebung/bitbake
