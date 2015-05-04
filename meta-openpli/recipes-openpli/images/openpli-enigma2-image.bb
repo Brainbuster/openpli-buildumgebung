@@ -21,6 +21,7 @@ KERNEL_WIFI_DRIVERS = " \
 
 EXTRA_KERNEL_WIFI_DRIVERS = " \
 	firmware-rtl8192cu \
+	kernel-module-r8188eu \	
 	\
 	kernel-module-rtl8192cu \
 	"
@@ -29,6 +30,7 @@ EXTERNAL_WIFI_DRIVERS = " \
 	firmware-rtl8192cu \
 	\
 	rtl8192cu \
+ 	mt7601u \	
 	"
 
 ENIGMA2_PLUGINS = " \
