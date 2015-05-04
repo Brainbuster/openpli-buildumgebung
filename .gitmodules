@@ -1,7 +1,7 @@
 [submodule "meta-openembedded"]
 	url = git://github.com/schleichdi2/openpli-buildumgebung/meta-openembedded
 [submodule "meta-openpli/recipes-openpli/e2openplugins"]
-	url = git://github.com/E2OpenPlugins/e2openplugins.git
+	url = git://github.com/schleichdi2/openpli-buildumgebung/meta-openpli/recipes-openpli/e2openplugins
 [submodule "openembedded-core"]
 	url = git://github.com/schleichdi2/openpli-buildumgebung/openembedded-core
 [submodule "bitbake"]
