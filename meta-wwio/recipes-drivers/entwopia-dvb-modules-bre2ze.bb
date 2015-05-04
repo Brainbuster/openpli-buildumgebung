@@ -3,5 +3,5 @@ SRCDATE = "20150204"
 
 require entwopia-dvb-modules.inc
 
-SRC_URI[md5sum] = "98d7cab81d7795d8cdff7d1d1504c5ee"
-SRC_URI[sha256sum] = "0e0d71d03ae1caaeb28ffe8377651f0123e72b998f172a66487e53d5a1cccfc4"
+SRC_URI[md5sum] = "2c24f9ef2ed2fa7c4c80f841920a36ef"
+SRC_URI[sha256sum] = "998cc582c5384e27beac64b49933bb0fd2fce38ed348d64966174fd83a091bf0"
