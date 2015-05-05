@@ -22,15 +22,19 @@ KERNEL_WIFI_DRIVERS = " \
 EXTRA_KERNEL_WIFI_DRIVERS = " \
 	firmware-rtl8192cu \
 	firmware-rtl8188eu \
+	firmware-rt3070 \
 	\
 	kernel-module-rtl8192cu \
 	kernel-module-r8188eu \
+	rt3070 \
 	"
 
 EXTERNAL_WIFI_DRIVERS = " \
 	firmware-rtl8192cu \
 	firmware-rtl8188eu \
+	firmware-rt3070 \
 	\
+	rt3070 \
 	rtl8188eu \
 	rtl8192cu \
  	mt7601u \	
