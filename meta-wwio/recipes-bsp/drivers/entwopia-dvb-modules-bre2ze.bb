@@ -1,5 +1,5 @@
 KV = "3.14.2"
-SRCDATE = "20150204"
+SRCDATE = "20150721"
 
 require entwopia-dvb-modules.inc
 
