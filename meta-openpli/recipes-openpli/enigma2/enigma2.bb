@@ -64,7 +64,7 @@ PYTHON_RDEPS = " \
     python-imaging \
     python-pycrypto \
     python-gdata \    
-	python-numbers \
+    python-numbers \
     python-json \
     python-misc \
     python-textutils \
@@ -119,8 +119,8 @@ GST_BAD_RDEPS = "  \
     gstreamer1.0-plugins-bad-fragmented \
     gstreamer1.0-plugins-bad-videoparsersbad \
     gstreamer1.0-plugins-bad-autoconvert \
-	gstreamer1.0-plugins-bad-dashdemux \
-	gstreamer1.0-plugins-bad-smoothstreaming \
+    gstreamer1.0-plugins-bad-dashdemux \
+    gstreamer1.0-plugins-bad-smoothstreaming \
     "
 
 GST_UGLY_RDEPS = "  \
