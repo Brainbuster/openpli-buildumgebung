@@ -24,6 +24,8 @@ OPTIONAL_PACKAGES += " \
 	dvbsnoop \
 	dvdfs \
 	evtest \
+	exfat-utils \
+	fuse-exfat \
 	gdb \
 	hddtemp \
 	hdparm \
@@ -34,6 +36,7 @@ OPTIONAL_PACKAGES += " \
 	mpd \
 	mtd-utils \
 	nano \
+	net-tools \
 	ntfs-3g \
 	ntp \
 	ofgwrite \
@@ -43,6 +46,7 @@ OPTIONAL_PACKAGES += " \
 	parted \
 	procps \
 	pyload \
+	python-youtube-dl \
 	python-requests \
 	python-mechanize \
 	rsync \
@@ -66,11 +70,10 @@ ENIGMA2_OPTIONAL = " \
 	channelsettings-enigma2-meta \
 	enigma2-pliplugins \
 	enigma2-plugin-drivers-usbserial \
-	enigma2-plugin-extensions-ambx \
 	enigma2-plugin-extensions-dlnabrowser \
 	enigma2-plugin-extensions-dlnaserver \
-	enigma2-plugin-extensions-tuxcom \
 	enigma2-plugin-extensions-xmltvimport \
+	enigma2-plugin-extensions-youtube \
 	enigma2-plugin-extensions-modifyplifullhd \
 	enigma2-plugin-security-firewall \
 	enigma2-plugin-skins-pli-hd \

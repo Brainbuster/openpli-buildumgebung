@@ -1,6 +1,6 @@
 SUMMARY = "The Linux Kernel Stream Control Transmission Protocol (lksctp) project"
 HOMEPAGE = "http://lksctp.org"
-SECTION = "libs"
+SECTION = "net"
 LICENSE = "LGPLv2.1 & GPLv2"
 
 LIC_FILES_CHKSUM = " \
@@ -60,3 +60,6 @@ FILES_${PN}-dev += " \
 "
 
 FILES_${PN}-utils = "${bindir}/*"
+
+RRECOMMENDS_${PN}-utils += "kernel-module-sctp"
+RRECOMMENDS_${PN}-ptest += "kernel-module-sctp"

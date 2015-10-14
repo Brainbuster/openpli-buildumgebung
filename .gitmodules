@@ -5,4 +5,6 @@
 [submodule "openembedded-core"]
 	url = git://github.com/Brainbuster/openpli-buildumgebung/openembedded-core
 [submodule "bitbake"]
-	url = git://github.com/Brainbuster/openpli-buildumgebung/bitbake
+	url = git://github.com/Brainbuster2/openpli-buildumgebung/bitbake
+[submodule "metaopenpli"]
+	url = git://github.com/Brainbuster2/openpli-buildumgebung/meta-openpli

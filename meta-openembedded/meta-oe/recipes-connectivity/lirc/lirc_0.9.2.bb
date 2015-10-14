@@ -19,9 +19,11 @@ SYSTEMD_AUTO_ENABLE_lirc = "enable"
 
 inherit autotools pkgconfig systemd pythonnative
 
-PACKAGECONFIG[systemd] = "--with-systemdsystemunitdir=${systemd_unitdir}/system/,--without-systemdsystemunitdir"
+PACKAGECONFIG[systemd] = "--with-systemdsystemunitdir=${systemd_unitdir}/system/,--without-systemdsystemunitdir,systemd"
+PACKAGECONFIG[x11] = "--with-x,--with-x=no,libx11,"
 
-PACKAGECONFIG ??= "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}"
+PACKAGECONFIG_append = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', ' systemd', '', d)}"
+PACKAGECONFIG_append = "${@bb.utils.contains('DISTRO_FEATURES', 'x11', ' x11', '', d)}"
 
 #EXTRA_OEMAKE = 'SUBDIRS="lib daemons tools"'
 do_install_append() {
@@ -40,6 +42,7 @@ do_install_append() {
 
 PACKAGES =+ "${PN}-contrib ${PN}-exec ${PN}-plugins ${PN}-python"
 
+RDEPENDS_${PN} = "bash"
 RDEPENDS_${PN}-exec = "${PN}"
 RDEPENDS_${PN}-python = "python"
 

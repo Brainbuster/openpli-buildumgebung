@@ -16,6 +16,5 @@ FILES_${PN} += "${base_libdir}/firmware"
 
 PACKAGE_ARCH = "all"
 
-SRC_URI[md5sum] = "dcb6af10103a3d90bb5ce9f254843ba6"
-SRC_URI[sha256sum] = "d93c2b265c40fefd601ce7c686891bb96aae7475fd50955274734c60559fc05d"
-
+SRC_URI[md5sum] = "bdb37d8c4818c6d77b476a1c9e3b4783"
+SRC_URI[sha256sum] = "30f03aeb395b7e8415a3c8cc2797cc91010119bc620f9fff95f58ceb6bc7df4b"

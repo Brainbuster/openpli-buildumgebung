@@ -3,7 +3,8 @@ HOMEPAGE = "http://stuvel.eu/flickrapi"
 SECTION = "devel/python"
 PRIORITY = "optional"
 LICENSE = "PSF"
-PR = "r1"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=d54e175a4083eea51ac31acaff818df5"
+PR = "r2"
 # NOTE: requires python-misc for webbrowser and subprocess as missing dependency of the webbrowser
 RDEPENDS_${PN} = "\
   python-core \
@@ -23,3 +24,5 @@ SRC_URI[sha256sum] = "ac9304f571175b8af4fc2ee17d3e110847b526640665ca53d97bbf9df9
 S = "${WORKDIR}/flickrapi-${PV}"
 
 inherit distutils
+
+include python-package-split.inc

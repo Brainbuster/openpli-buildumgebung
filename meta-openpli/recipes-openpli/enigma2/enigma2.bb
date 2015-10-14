@@ -39,25 +39,41 @@ RRECOMMENDS_${PN} = " \
 	"
 
 PYTHON_RDEPS = " \
+    python-codecs \
+    python-core \
+    python-crypt \
+    python-fcntl \
+    python-lang \
+    python-netclient \
+    python-netserver \
+    python-pickle \
+    python-re \
+    python-shell \
+    python-threading \
+    python-twisted-core \
+    python-twisted-web \
+    python-utf8-hack \
+    python-xml \
+    python-zlib \
+    python-zopeinterface \
+    python-email \
+    python-mime \
+    python-pyusb \
+    python-subprocess \
+    python-process \
+    python-imaging \
+    python-pycrypto \
+    python-gdata \    
 	python-numbers \
-	python-codecs \
-	python-core \
-	python-crypt \
-	python-fcntl \
-	python-lang \
-	python-netclient \
-	python-netserver \
-	python-pickle \
-	python-re \
-	python-shell \
-	python-threading \
-	python-twisted-core \
-	python-twisted-web \
-	python-utf8-hack \
-	python-xml \
-	python-zlib \
-	python-zopeinterface \
-	"
+    python-json \
+    python-misc \
+    python-textutils \
+    python-compression \
+    python-robotparser \
+    python-mechanize \
+    python-pyopenssl \
+    python-html \
+"
 
 GST_BASE_RDEPS = "  \
     gstreamer1.0-plugins-base-alsa \
@@ -103,6 +119,8 @@ GST_BAD_RDEPS = "  \
     gstreamer1.0-plugins-bad-fragmented \
     gstreamer1.0-plugins-bad-videoparsersbad \
     gstreamer1.0-plugins-bad-autoconvert \
+	gstreamer1.0-plugins-bad-dashdemux \
+	gstreamer1.0-plugins-bad-smoothstreaming \
     "
 
 GST_UGLY_RDEPS = "  \
@@ -154,8 +172,7 @@ inherit gitpkgv pythonnative
 PV = "2.7+git${SRCPV}"
 PKGV = "2.7+git${GITPKGV}"
 
-SRC_URI = "git://github.com/schleichdi2/openpli-e2.git;protocol=git;branch=test"
-SRC_URI += "${@base_contains('GST_VERSION', '1.0', 'file://disablesubtitleshack.patch', '', d)}"
+SRC_URI = "git://github.com/schleichdi2/openpli-e2.git;protocol=git"
 
 LDFLAGS_prepend = "${@base_contains('GST_VERSION', '1.0', ' -lxml2 ', '', d)}"
 

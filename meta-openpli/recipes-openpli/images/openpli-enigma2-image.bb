@@ -22,11 +22,9 @@ KERNEL_WIFI_DRIVERS = " \
 EXTRA_KERNEL_WIFI_DRIVERS = " \
 	firmware-rtl8192cu \
 	firmware-rtl8188eu \
-	firmware-rt3070 \
 	\
 	kernel-module-rtl8192cu \
 	kernel-module-r8188eu \
-	rt3070 \
 	"
 
 EXTERNAL_WIFI_DRIVERS = " \
@@ -34,10 +32,10 @@ EXTERNAL_WIFI_DRIVERS = " \
 	firmware-rtl8188eu \
 	firmware-rt3070 \
 	\
-	rt3070 \
 	rtl8188eu \
 	rtl8192cu \
- 	mt7601u \	
+ 	mt7601u \
+ 	rt3070 \
 	"
 
 ENIGMA2_PLUGINS = " \
@@ -47,12 +45,12 @@ ENIGMA2_PLUGINS = " \
 	enigma2-plugin-extensions-graphmultiepg \
 	enigma2-plugin-extensions-mediaplayer \
 	enigma2-plugin-extensions-mediascanner \
+	enigma2-plugin-extensions-moviecut \
 	enigma2-plugin-extensions-openwebif \
 	enigma2-plugin-extensions-pictureplayer \
 	enigma2-plugin-extensions-ppanel \
 	\
 	enigma2-plugin-pli-softcamsetup \
-	enigma2-plugin-softcams-oscam \
 	\
 	enigma2-plugin-systemplugins-fastscan \
 	enigma2-plugin-systemplugins-hotplug \
@@ -97,7 +95,6 @@ IMAGE_INSTALL += " \
 	${@base_contains("MACHINE_FEATURES", "kernelwifi", "${KERNEL_WIFI_DRIVERS}", "", d)} \
 	${@base_contains("MACHINE_FEATURES", "extrakernelwifi", "${EXTRA_KERNEL_WIFI_DRIVERS}", "", d)} \
 	${@base_contains("MACHINE_FEATURES", "externalwifi", "${EXTERNAL_WIFI_DRIVERS}", "", d)} \
-	${@base_contains("MACHINE_FEATURES", 'wifiusblegacy', "enigma2-plugin-drivers-network-usb-rt3070", "", d)} \
 	\
 	${@base_contains('OPENPLI_FEATURES', 'dvd', 'cdfs cdtextinfo kernel-module-isofs kernel-module-udf', '', d)} \
 	"

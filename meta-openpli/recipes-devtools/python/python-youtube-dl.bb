@@ -21,6 +21,7 @@ RDEPENDS_${PN} = " \
 	python-gdata \
 	python-subprocess \
 	python-unixadmin \
+	python-ctypes \
 	"
 
 PACKAGES =+ " ${PN}-src"

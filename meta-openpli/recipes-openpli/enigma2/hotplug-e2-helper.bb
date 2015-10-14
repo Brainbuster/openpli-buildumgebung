@@ -8,8 +8,9 @@ inherit gitpkgv
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 
-SRCREV = "02e6879ffcf2a0aa9c83b355b52108f1e5f4f56c"
-SRC_URI = "git://git.code.sf.net/p/openpli/${PN}"
+SRCREV = "8318994c36b7d730300dc783f575add1240f04b9"
+GITHUB_URI ?= "git://github.com"
+SRC_URI = "${GITHUB_URI}/OpenPLi/${BPN}.git"
 
 S = "${WORKDIR}/git"
 

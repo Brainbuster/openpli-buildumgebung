@@ -14,11 +14,14 @@ HOMEPAGE = "http://www.opensaf.org"
 inherit autotools useradd systemd pkgconfig
 
 SRC_URI = "${SOURCEFORGE_MIRROR}/${BPN}/releases/${BPN}-${PV}.tar.gz \
-           file://install-samples-from-srcdir.patch"
+           file://install-samples-from-srcdir.patch \
+           file://0001-not-install-node_name.patch \
+"
 
 SRC_URI[md5sum] = "534c0a99438a62c4c8dda56cfa67300c"
 SRC_URI[sha256sum] = "2f5ba57fe67e94099c0df82d0a0dd207b5c583c93030035ba354c97b5471b590"
 
+SECTION = "admin"
 LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM = "file://COPYING.LIB;md5=a916467b91076e631dd8edb7424769c7"
 
@@ -33,10 +36,24 @@ SYSTEMD_AUTO_ENABLE = "disable"
 
 FILES_${PN} += "${localstatedir}/run"
 
+RDEPENDS_${PN} += "bash python"
+
 INSANE_SKIP_${PN} = "dev-so"
 
 do_install_append() {
     rm -fr "${D}${localstatedir}/lock"
     rm -fr "${D}${localstatedir}/run"
     rmdir --ignore-fail-on-non-empty "${D}${localstatedir}"
+    install -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${B}/osaf/services/infrastructure/nid/config/opensafd.service \
+        ${D}${systemd_unitdir}/system
 }
+
+pkg_postinst_${PN} () {
+    if [ "x$D" != "x" ]; then
+        exit 1
+    fi
+
+    hostname -s > /etc/opensaf/node_name
+}
+

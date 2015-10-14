@@ -1,5 +1,5 @@
 DESCRIPTION = "netkit-telnet includes the telnet daemon and client."
-SECTION = "base"
+SECTION = "net"
 DEPENDS = "ncurses"
 LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://telnet/telnet.cc;beginline=2;endline=3;md5=780868e7b566313e70cb701560ca95ef"
@@ -8,6 +8,7 @@ SRC_URI = "ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/${BP}.tar.gz \
     file://To-aviod-buffer-overflow-in-telnet.patch \
     file://Warning-fix-in-the-step-of-install.patch \
     file://telnet-xinetd \
+    file://cross-compile.patch \
 "
 
 EXTRA_OEMAKE = "INSTALLROOT=${D} SBINDIR=${sbindir} DAEMONMODE=755 \
@@ -15,7 +16,10 @@ EXTRA_OEMAKE = "INSTALLROOT=${D} SBINDIR=${sbindir} DAEMONMODE=755 \
 
 do_configure () {
     ./configure --prefix=${prefix}
-    echo "LDFLAGS=${LDFLAGS}" > MCONFIG
+    sed -e 's#^CFLAGS=\(.*\)$#CFLAGS= -D_GNU_SOURCE \1#' \
+        -e 's#^CXXFLAGS=\(.*\)$#CXXFLAGS= -D_GNU_SOURCE \1#' \
+        -e 's#^LDFLAGS=.*$#LDFLAGS= ${LDFLAGS}#' \
+        -i MCONFIG
 }
 
 do_compile () {

@@ -20,7 +20,9 @@ IMAGE_INSTALL = " \
 	opkg \
 	packagegroup-base \
 	packagegroup-core-boot \
-	sambaserver \
+        packagegroup-base-smbfs-client \
+        packagegroup-base-smbfs-server \
+        packagegroup-base-smbfs-utils \
 	sdparm \
 	tuxbox-common \
 	tuxbox-links \
@@ -28,6 +30,9 @@ IMAGE_INSTALL = " \
 	util-linux-sfdisk \
 	volatile-media \
 	vsftpd \
+        librtmp \
+        rtmpdump \
+        python-twisted-protocols python-numbers python-argparse \        
 	"
 
 export IMAGE_BASENAME = "openpli"

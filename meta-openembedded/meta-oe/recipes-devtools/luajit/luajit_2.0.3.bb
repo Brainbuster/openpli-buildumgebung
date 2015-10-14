@@ -16,8 +16,8 @@ inherit pkgconfig binconfig
 BBCLASSEXTEND = "native"
 
 do_configure_prepend() {
-    sed -i -e s:/usr/local:${prefix}:g ${S}/Makefile
-    sed -i -e s:/lib$:${base_libdir}:g ${S}/Makefile
+    sed -i 's:PREFIX= /usr/local:PREFIX= ${prefix}:g' ${S}/Makefile
+    sed -i 's:MULTILIB= lib:MULTILIB= ${baselib}:g' ${S}/Makefile
 }
 
 EXTRA_OEMAKE = 'CROSS=${HOST_PREFIX} \
@@ -25,8 +25,8 @@ EXTRA_OEMAKE = 'CROSS=${HOST_PREFIX} \
                 TARGET_LDFLAGS="${TOOLCHAIN_OPTIONS}" \
                 TARGET_SHLDFLAGS="${TOOLCHAIN_OPTIONS}"'
 EXTRA_OEMAKE_append_powerpc = ' HOST_CC="${BUILD_CC} -m32"'
+EXTRA_OEMAKE_append_x86 = ' HOST_CC="${BUILD_CC} -m32"'
 EXTRA_OEMAKE_append_x86-64 = ' HOST_CC="${BUILD_CC}"'
-EXTRA_OEMAKE_append_i586 = ' HOST_CC="${BUILD_CC} -m32"'
 EXTRA_OEMAKE_append_powerpc64 = ' HOST_CC="${BUILD_CC}"'
 EXTRA_OEMAKE_append_arm = ' HOST_CC="${BUILD_CC} -m32"'
 EXTRA_OEMAKE_append_mips64 = ' HOST_CC="${BUILD_CC} -m32"'

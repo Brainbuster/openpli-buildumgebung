@@ -85,6 +85,7 @@ feed: init
 full: init
 	@echo 'Building image for $(MACHINE)'
 	@. $(TOPDIR)/env.source && cd $(TOPDIR) && bitbake openpli-enigma2-image && bitbake openpli-enigma2-feed
+
 update:
 	@echo 'Updating Git repositories...'
 	@HASH=`$(XSUM) $(MAKEFILE_LIST)`; \
@@ -149,6 +150,7 @@ $(TOPDIR)/conf/local.conf: $(DEPDIR)/.local.conf.$(LOCAL_CONF_HASH)
 	@echo 'Generating $@'
 	@test -d $(@D) || mkdir -p $(@D)
 	@echo 'TOPDIR = "$(TOPDIR)"' > $@
+	@echo 'MACHINE = "$(MACHINE)"' >> $@
 	@echo 'require $(TOPDIR)/conf/openpli.conf' >> $@
 
 $(TOPDIR)/conf/site.conf: $(CURDIR)/site.conf

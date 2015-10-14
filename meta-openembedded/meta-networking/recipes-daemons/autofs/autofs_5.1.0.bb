@@ -1,5 +1,5 @@
 SUMMARY = "Kernel based automounter for linux"
-SECTION = "base"
+SECTION = "utils"
 LICENSE = "GPL-2.0"
 LIC_FILES_CHKSUM = "file://COPYING;md5=0636e73ff0215e8d672dc4c32c317bb3"
 
@@ -20,6 +20,7 @@ SRC_URI = "${KERNELORG_MIRROR}/linux/daemons/autofs/v5/autofs-${PV}.tar.gz \
            file://using-pkg-config-to-detect-libxml-2.0-and-krb5.patch \
            file://force-STRIP-to-emtpy.patch \
            file://remove-bashism.patch \
+           file://fix-the-YACC-rule-to-fix-a-building-failure.patch \
 "
 
 SRC_URI[md5sum] = "b7724a9a55923f3c06933a8dfd1e79d3"

@@ -4,7 +4,7 @@ DRBD mirrors a block device over the network to another machine.\
 Think of it as networked raid 1. It is a building block for\
 setting up high availability (HA) clusters."
 HOMEPAGE = "http://www.drbd.org/"
-SECTION = "kernel/userland"
+SECTION = "admin"
 LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5574c6965ae5f583e55880e397fbb018"
 
@@ -46,6 +46,8 @@ do_install_append() {
 
 RDEPENDS_${PN} += "bash perl"
 
+# The drbd items are explicitly put under /lib when installed.
+#
 FILES_${PN} += "/run"
-FILES_${PN} += "${base_libdir}/drbd"
-FILES_${PN}-dbg += "${base_libdir}/drbd/.debug"
+FILES_${PN} += "/lib/drbd"
+FILES_${PN}-dbg += "/lib/drbd/.debug"

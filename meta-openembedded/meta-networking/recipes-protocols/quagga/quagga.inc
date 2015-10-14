@@ -6,7 +6,7 @@ Quagga is a fork of GNU Zebra which was developed by Kunihiro \
 Ishiguro. The Quagga tree aims to build a more involved community \
 around Quagga than the current centralised model of GNU Zebra."
 HOMEPAGE = "http://www.nongnu.org/quagga/"
-SECTION = "network"
+SECTION = "net"
 LICENSE = "GPL-2.0 & LGPL-2.0"
 DEPENDS = "readline ncurses perl-native"
 DEPENDS += "${@base_contains('DISTRO_FEATURES', 'snmp', 'net-snmp', '', d)}"
@@ -145,6 +145,8 @@ do_install () {
     sed -e 's,@BASE_SBINDIR@,${base_sbindir},g' \
         -e 's,@SYSCONFDIR@,${sysconfdir},g' \
         -e 's,@SBINDIR@,${sbindir},g' \
+        -e 's,@base_bindir@,${base_bindir},g' \
+        -e 's,@localstatedir@,${localstatedir},g' \
         -i ${D}${systemd_unitdir}/system/*.service
 }
 

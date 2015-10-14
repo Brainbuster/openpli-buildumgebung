@@ -11,10 +11,12 @@ SRC_URI = "http://mirror.stshosting.co.uk/mariadb/mariadb-${PV}/source/mariadb-$
            file://my.cnf \
            file://mysqld.service \
            file://configure.cmake-fix-valgrind.patch \
+           file://fix-a-building-failure.patch \
+           file://fix-CVE-2015-2305.patch \
           "
 
-SRC_URI[md5sum] = "d2415efc6a6d73d7a58f3c79bb42f2e8"
-SRC_URI[sha256sum] = "a16dc62e4bcabecd5c483f2f8b657483a8c51934e7be5ad4ab21b8baea1f5332"
+SRC_URI[md5sum] = "c8760d6b5890fc1de76c07af48092c88"
+SRC_URI[sha256sum] = "a0709997140549154edb87c9dfab564cd4755b238251acbf42369118f9bb4d01"
 
 S = "${WORKDIR}/mariadb-${PV}"
 
@@ -41,6 +43,7 @@ PACKAGECONFIG_class-native = ""
 PACKAGECONFIG[pam] = ",-DWITHOUT_AUTH_PAM=TRUE,libpam"
 PACKAGECONFIG[valgrind] = "-DWITH_VALGRIND=TRUE,-DWITHOUT_VALGRIND=TRUE,valgrind"
 PACKAGECONFIG[libedit] = "-DLIBEDIT_INTERFACE=TRUE,-DLIBEDIT_INTERFACE=FALSE,libedit"
+PACKAGECONFIG[krb5] = ", ,krb5"
 
 # MariaDB doesn't link properly with gold
 # https://mariadb.atlassian.net/browse/MDEV-5982
@@ -83,6 +86,14 @@ do_compile_prepend_class-target () {
     # and since we're cross-compiling that is disabled
     cp ${STAGING_BINDIR_NATIVE}/comp_err ${S}/extra
     cp ${STAGING_BINDIR_NATIVE}/comp_sql ${S}/scripts
+
+    if [ "${@bb.utils.contains('PACKAGECONFIG', 'krb5', 'yes', 'no', d)}" = "no" ]; then
+        mkdir ${B}/include/openssl
+        echo "#ifndef KSSL_H" >${B}/include/openssl/kssl.h
+        echo "#define KSSL_H" >>${B}/include/openssl/kssl.h
+        echo "#include <openssl/opensslconf.h>">>${B}/include/openssl/kssl.h
+        echo "#endif" >>${B}/include/openssl/kssl.h
+    fi
 }
 
 SYSROOT_PREPROCESS_FUNCS += "mariadb_sysroot_preprocess"
@@ -173,7 +184,7 @@ FILES_libmysqlclient-dbg = "${libdir}/plugin/.debug/ \
 # Avoid warnings about ha_xtradb.so.0.0.0 and ha_innodb_plugin.so.0.0.0
 # which are intentionally non-PIC on 32-bit x86 (see e.g.
 # storage/xtradb/plug.in in the source)
-INSANE_SKIP_libmysqlclient_append_i586 = " textrel"
+INSANE_SKIP_libmysqlclient_append_x86 = " textrel"
 
 FILES_libmysqlclient-r = "${libdir}/libmysqlclient_r.so.*"
 FILES_libmysqlclient-r-dev = "\
